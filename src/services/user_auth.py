@@ -1,10 +1,11 @@
 import boto3
 from botocore.exceptions import ClientError
+import hmac
+import hashlib
+import base64
 
 from config import Config
 from utils.response_helper import ResponseHelper
-
-PASSWORD_DEFAULT = Config.get('passwordDefault')
 
 AUTHFLOW = 'USER_PASSWORD_AUTH'
 
@@ -15,21 +16,31 @@ class CognitoAuth:
     def __init__(self):
         self.client = client
         self.client_id = Config.get('clientId')
+        self.client_secret = Config.get('clientSecret')
         self.user_pool_id = Config.get('userPoolId')
         self.response_helper = ResponseHelper.response_helper
 
+    @staticmethod
+    def __get_secret_hash(username, client_id, client_secret):
+        message = username + client_id
+        dig = hmac.new(
+            str(client_secret).encode('utf-8'),
+            msg=message.encode('utf-8'),
+            digestmod=hashlib.sha256
+        ).digest()
+        return base64.b64encode(dig).decode()
+
     def authenticate_user(self, username: str, password: str):
         try:
-            print('fd')
             response = self.client.initiate_auth(
                 AuthFlow=AUTHFLOW,
                 AuthParameters={
                     'USERNAME': username,
-                    'PASSWORD': password
+                    'PASSWORD': password,
+                    'SECRET_HASH': self.__get_secret_hash(username, self.client_id, self.client_secret)
                 },
                 ClientId=self.client_id
             )
-            print(response)
             return self.response_helper(response, 'User authenticated successfully', 'Authentication failed')
         except self.client.exceptions.NotAuthorizedException as e:
             print(f'Error during authentication: {e}')

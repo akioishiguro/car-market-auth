@@ -7,6 +7,7 @@ from services.resources.user_api_resources import users_ns
 from services.resources.group_api_resources import groups_ns
 from services.resources.user_group_resources import user_groups_ns
 from services.resources.auth_api_resources import auth_ns
+from services.resources.admin_api_resources import admin_users_ns
 
 app = Flask(__name__)
 
@@ -27,5 +28,6 @@ class ApiService(object):
         self.api.add_namespace(groups_ns)
         self.api.add_namespace(user_groups_ns)
         self.api.add_namespace(auth_ns)
+        self.api.add_namespace(admin_users_ns)
         logger.info('Serving on http://localhost:{}/swagger/'.format( self.PORT))
         serve(app, host=self.HOST, port=self.PORT)
