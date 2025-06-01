@@ -1,8 +1,8 @@
-# Lambda Authenticated API
+# Lambda Car Market Authenticated API
 
 ## Descrição
 
-Esta aplicação foi criada utilizando Python 3.9 e é destinada ao gerenciamento de clientes de um restaurante. O código foi desenvolvido para ser executado em uma função AWS Lambda, com o API Gateway da AWS atuando como trigger para as requisições. O sistema é focado na administração de usuários e controle de acessos, utilizando o Amazon Cognito para implementar o gerenciamento de grupos e usuários, garantindo uma abordagem escalável e segura para controle de permissões.
+Esta aplicação foi criada utilizando Python 3.9 e é destinada ao gerenciamento de clientes de um sistema de venda de carros. O código foi desenvolvido para ser executado em uma função AWS Lambda, com o API Gateway da AWS atuando como trigger para as requisições. O sistema é focado na administração de usuários e controle de acessos, utilizando o Amazon Cognito para implementar o gerenciamento de grupos e usuários, garantindo uma abordagem escalável e segura para controle de permissões.
 
 Características específicas do projeto:
 - Validação de CPF: O sistema foi projetado para validar o CPF dos usuários antes de realizar operações de criação ou atualização. Caso o CPF seja inválido, o sistema retornará um erro informando que o CPF é inválido.
