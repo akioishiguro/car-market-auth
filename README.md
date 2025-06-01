@@ -20,13 +20,14 @@ pip install -r requirements.txt
 Além disso, é necessário adicionar as variáveis de ambiente que se encontram no arquivo `application.env`. As variáveis de ambiente incluem configurações como região da AWS, ID do pool de usuários, ID do cliente, entre outras.
 
 ```env
-    awsRegion=us-east-1
-    userPoolId=
-    clientId=
-    passwordDefault=
-    awsClientCognito=cognito-idp
-    groupNameDefault=clients
-    groupsWithAccessPermissions=['admin','programmatic_user']
+awsRegion=us-east-1
+userPoolId=
+clientId=
+clientSecret=
+awsClientCognito=cognito-idp
+groupNameDefault=clients
+groupNameAdmin=admin
+groupsWithAccessPermissions=['admin','programmatic_user']
 ```
 
 Com o objetivo de facilitar o testes, o usuario e senha do acesso admin para autenticação é:
