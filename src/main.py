@@ -15,5 +15,5 @@ def lambda_handler(event, context):
         logger.error(f'Unhandled exception: {e}')
         raise e
 
-if __name__ == '__main__':
-    ApiService().run()
+# if __name__ == '__main__':
+#     ApiService().run()
