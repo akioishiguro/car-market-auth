@@ -40,3 +40,16 @@ class ValidateTokenResource(Resource):
             return response, HTTPStatus.OK
         else:
             return response, HTTPStatus.UNAUTHORIZED
+
+@auth_ns.route('/validate_token_by_group')
+class ValidateTokenResourceByGroup(Resource):
+    @auth_ns.param('group_name', 'Group Name for validate', _in='formData')
+    def post(self):
+        token = request.headers.get('Authorization')
+        group_name = request.form.get('group_name')
+
+        response = cognito.validate_token_permission(token, [group_name])
+        if response['status_success']:
+            return response, HTTPStatus.OK
+        else:
+            return response, HTTPStatus.UNAUTHORIZED

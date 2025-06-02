@@ -31,7 +31,7 @@ jobs:
       with:
         python-version: "3.9"
 
-    - name: Criar arquivo application.env
+    - name: Criar arquivo application-dev.env
       run: |
         echo "awsRegion=${{ secrets.AWS_REGION }}" >> src/application.env
         echo "userPoolId=${{ secrets.USER_POOL_ID }}" >> src/application.env

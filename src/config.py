@@ -2,7 +2,10 @@ import os
 import ast
 from dotenv import load_dotenv
 
-load_dotenv('application.env')
+if os.path.exists('application.env'):
+    load_dotenv('application.env')
+else:
+    load_dotenv('application-dev.env')
 
 
 class Config(object):
