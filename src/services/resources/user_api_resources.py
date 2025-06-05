@@ -44,7 +44,7 @@ response_model = users_ns.model('Response', {
 
 @users_ns.route('/create_user')
 class CreateUserResource(Resource):
-    @auth.login_required
+    # @auth.login_required
     @users_ns.expect(create_user_model)
     @users_ns.marshal_with(response_model)
     def post(self, group_name=GROUP_NAME_DEFAULT):
