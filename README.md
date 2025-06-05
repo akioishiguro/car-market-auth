@@ -39,6 +39,9 @@ Com o objetivo de facilitar o testes, o usuario e senha do acesso admin para aut
 ```
 
 ## Deploy na AWS
+Toda a esteira de deploy é feita através do gitachub actions, onde o código é enviado para o branch main e automaticamente é feito o deploy na AWS.
+
+![Github](img/deploy_git.png)
 
 Para realizar o deploy na AWS, utilizamos o AWS SAM CLI (Serverless Application Model). O AWS SAM CLI facilita o build e o deploy de aplicações serverless.
 Build: Este comando compila o código-fonte e prepara a aplicação para o deploy.
@@ -57,6 +60,8 @@ sam local start-api
 ```
 O comando local start-api irá auxiliar na execução do serviço localmente, para testes e validações.
 
-
+![lambda](img/lambda.png)
 ---
 Obs: Todos os cpfs utilizados foram gerados através da plataforma de teste: https://www.geradordecpf.org/
+
+![CPF](img/site_cpf.png)

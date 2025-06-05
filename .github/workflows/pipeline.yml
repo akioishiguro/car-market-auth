@@ -30,16 +30,16 @@ jobs:
       with:
         python-version: "3.9"
 
-    - name: Criar arquivo application.env
+    - name: Criar arquivo application-dev.env
       run: |
-        echo "awsRegion=${{ secrets.AWS_REGION }}" >> application.env
-        echo "userPoolId=${{ secrets.USER_POOL_ID }}" >> application.env
-        echo "clientId=${{ secrets.CLIENT_ID }}" >> application.env
-        echo "clientSecret=${{ secrets.CLIENT_SECRET }}" >> application.env
-        echo "awsClientCognito=cognito-idp" >> application.env
-        echo "groupNameDefault=${{ secrets.GROUP_NAME_DEFAULT }}" >> application.env
-        echo "groupNameAdmin=${{ secrets.GROUP_NAME_ADMIN }}" >> application.env
-        echo "groupsWithAccessPermissions=${{ secrets.GROUPS_WITH_ACCESS_PERMISSIONS }}" >> application.env
+        echo "awsRegion=${{ secrets.AWS_REGION }}" >> src/application.env
+        echo "userPoolId=${{ secrets.USER_POOL_ID }}" >> src/application.env
+        echo "clientId=${{ secrets.CLIENT_ID }}" >> src/application.env
+        echo "clientSecret=${{ secrets.CLIENT_SECRET }}" >> src/application.env
+        echo "awsClientCognito=cognito-idp" >> src/application.env
+        echo "groupNameDefault=${{ secrets.GROUP_NAME_DEFAULT }}" >> src/application.env
+        echo "groupNameAdmin=${{ secrets.GROUP_NAME_ADMIN }}" >> src/application.env
+        echo "groupsWithAccessPermissions=${{ secrets.GROUPS_WITH_ACCESS_PERMISSIONS }}" >> src/application.env
 
     - name: Install AWS SAM CLI
       run: |

@@ -66,6 +66,9 @@ class CognitoAuth:
 
     def validate_token_permission(self, token: str, group_names: list) -> dict:
         try:
+            if token.startswith('Bearer '):
+                token = token[len('Bearer '):]
+
             response = self.client.get_user(
                 AccessToken=token
             )
@@ -81,6 +84,8 @@ class CognitoAuth:
                 if group_name in groups:
                     return self.response_helper(response, f'User {username} has required permissions',
                                                 'Permission validation failed')
+                else:
+                    raise ValueError(f'User {username} does not have required permissions')
             return self.response_helper(response, '', f'User {username} does not have required permissions')
 
         except ClientError as e:
